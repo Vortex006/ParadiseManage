@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD com.vortex.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mapper命名空间,这里调用的是接口类-->
+<mapper namespace="com.vortex.Mapper.GodMapper">
+
+    <!--    查询所有神仙-->
+    <select id="SelectGodAll" resultType="com.vortex.Entity.God">
+        SELECT *
+        FROM paradise.god
+        limit ${offset},${pagesize};
+    </select>
+
+    <!--根据神仙id查询神仙-->
+    <select id="SelectGodForId" resultType="com.vortex.Entity.God">
+        SELECT *
+        FROM paradise.god
+        WHERE godId = ${godid};
+    </select>
+
+    <!--添加神仙-->
+    <insert id="AddGod">
+        INSERT INTO paradise.god(godName, godSex, godType, godPosition, godPlace, godMerit, godMaster)
+        VALUES (#{godName}, #{godSex}, #{godType}, #{godPosition}, #{godPlace}, #{godMerit}, #{godMaster});
+    </insert>
+
+    <!--根据神仙ID删除神仙-->
+    <delete id="DeleteGod">
+        DELETE
+        FROM paradise.god
+        WHERE godId = ${godid};
+    </delete>
+
+
+    <update id="UpdateGod">
+        UPDATE paradise.god
+        SET godName=#{godName},
+            godSex=#{godSex},
+            godType=#{godType},
+            godPosition=#{godPosition},
+            godPlace=#{godPlace},
+            godMerit=${godMerit},
+            godMaster=#{godMaster}
+        WHERE godId = ${godId};
+    </update>
+
+    <select id="SelectGodCount" resultType="int">
+        SELECT count(*)
+        FROM paradise.god;
+    </select>
+
+    <select id="SelectGodForType" resultType="com.vortex.Entity.God">
+        SELECT *
+        FROM (SELECT *
+              FROM paradise.god
+              WHERE ${type} LIKE concat('%', #{value}, '%'))
+        limit ${searchOffset},${searchPageSize};
+    </select>
+
+</mapper>

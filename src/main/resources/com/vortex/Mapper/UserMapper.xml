@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD com.vortex.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mapper命名空间,这里调用的是接口类-->
+<mapper namespace="com.vortex.Mapper.UserMapper">
+
+    <!--查询所有用户-->
+    <select id="SelectUserAll" resultType="com.vortex.Entity.User">
+        SELECT *
+        FROM paradise.user
+        limit ${offset},${pagesize};
+    </select>
+
+    <!--根据用户ID查询用户-->
+    <select id="SelectUserForId" resultType="com.vortex.Entity.User">
+        SELECT *
+        FROM paradise.user
+        WHERE userid = #{userid};
+    </select>
+
+    <!--根据用户名查询用户-->
+    <select id="SelectUserForUsername" resultType="com.vortex.Entity.User">
+        SELECT *
+        FROM paradise.user
+        WHERE username = #{username};
+    </select>
+
+    <!--添加用户-->
+    <insert id="AddUser">
+        INSERT INTO paradise.user(username, password, email, phone)
+        VALUES (#{username}, #{password}, #{email}, #{phone});
+    </insert>
+
+    <!--根据用户ID删除用户-->
+    <delete id="DeleteUser">
+        DELETE
+        FROM paradise.user
+        WHERE userid = #{userid};
+    </delete>
+
+    <!--根据用户ID更新用户-->
+    <update id="UpdateUserForId">
+        UPDATE paradise.user
+        SET username=#{username},
+            password=#{password},
+            email=#{email},
+            phone=#{phone}
+        WHERE userid = #{userid};
+    </update>
+
+    <select id="SelectUserCount" resultType="int">
+        SELECT count(*)
+        FROM paradise.user;
+    </select>
+
+</mapper>
