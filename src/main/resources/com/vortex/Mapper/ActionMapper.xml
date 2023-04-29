@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD com.vortex.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mapper命名空间,这里调用的是接口类-->
+<mapper namespace="com.vortex.Mapper.ActionMapper">
+
+    <resultMap id="MiddleMenuMap" type="com.vortex.Entity.Menu.MenuMiddle">
+        <result column="MenuId" property="MenuId"/>
+        <result column="Name" property="Name"/>
+        <result column="Icon" property="Icon"/>
+        <result column="Index" property="Index"/>
+        <result column="Route" property="Route"/>
+        <result column="Children" property="Children"/>
+    </resultMap>
+
+    <resultMap id="MenuMap" type="com.vortex.Entity.Menu.Menu">
+        <result column="MenuId" property="MenuId"/>
+        <result column="Name" property="Name"/>
+        <result column="Icon" property="Icon"/>
+        <result column="Index" property="Index"/>
+        <result column="Route" property="Route"/>
+        <result column="Children" property="Children"/>
+    </resultMap>
+
+    <!--查询包含子菜单索引的主菜单-->
+    <select id="SelectMenu" resultType="com.vortex.Entity.Menu.MenuMiddle">
+        SELECT *
+        FROM paradise.menu;
+    </select>
+
+    <!--根据子菜单索引查询子菜单-->
+    <select id="SelectSubMenu" resultType="com.vortex.Entity.Menu.Menu">
+        SELECT *
+        FROM paradise.submenu
+        WHERE MenuId = #{SubMenuId};
+    </select>
+
+    <!--增加一个Action-->
+    <insert id="AddAction">
+        INSERT INTO Action (Type, Name, Data, Date, Other)
+        VALUES (#{Type}, #{Name}, #{Data}, #{Date}, #{Other});
+    </insert>
+
+    <insert id="AddNotice">
+        INSERT INTO Action (Type, Name, Data, Date, Other)
+        VALUES ('Notice', '公告', #{Data}, #{Date}, 'null');
+    </insert>
+
+    <select id="SelectAction" resultType="com.vortex.Entity.Action">
+        SELECT *
+        FROM Action;
+    </select>
+
+    <select id="SelectNotice" resultType="com.vortex.Entity.Action">
+        SELECT *
+        FROM Action
+        WHERE Type = 'Notice';
+    </select>
+
+
+</mapper>
