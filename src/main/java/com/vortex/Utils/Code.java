@@ -45,8 +45,12 @@ public class Code {
     //公告相关
     public static final int NOTICE_GET_OK = 50000;
     public static final int NOTICE_GET_ERROR = 50001;
-    public static final int NOTICE_CHANGE_OK = 50010;
-    public static final int NOTICE_CHANGE_ERROR = 50011;
+    public static final int NOTICE_SET_OK = 50010;
+    public static final int NOTICE_SET_ERROR = 50011;
+
+    //菜单相关
+    public static final int MENU_GET_OK = 50100;
+    public static final int MENU_GET_ERROR = 50101;
 
     //异常编号
     public static final int SYSTEM_ERROR = 10000;
