@@ -1,60 +1,78 @@
 package com.vortex.Entity;
 
 public class User {
-    private int userid;
-    private String username;
-    private String password;
-    private String email;
-    private String phone;
+    private int userId;
+    private String userName;
+    private String userPassword;
+    private String userEmail;
+    private String userPhone;
 
-    public int getUserid() {
-        return userid;
+    public User() {
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public User(String userName, String userPassword, String userEmail, String userPhone) {
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userEmail = userEmail;
+        this.userPhone = userPhone;
     }
 
-    public String getUsername() {
-        return username;
+    public User(int userId, String userName, String userPassword, String userEmail, String userPhone) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userEmail = userEmail;
+        this.userPhone = userPhone;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public int getUserId() {
+        return userId;
     }
 
-    public String getPassword() {
-        return password;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getUserName() {
+        return userName;
     }
 
-    public String getEmail() {
-        return email;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public String getPhone() {
-        return phone;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "userid=" + userid +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userPhone='" + userPhone + '\'' +
                 '}';
     }
 }

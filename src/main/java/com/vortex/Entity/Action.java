@@ -1,86 +1,96 @@
 package com.vortex.Entity;
 
 public class Action {
-    private int ActionId;
-    private String Type;
-    private String Name;
-    private String Data;
-    private String Date;
-    private String Other;
+    private int actionId;
+    private String actionType;
+    private String actionName;
+    private String actionData;
+    private String actionDate;
+    private String actionOther;
 
     public Action() {
     }
 
-    public Action(String data, String date) {
-        Data = data;
-        Date = date;
+    public Action(String actionData, String actionDate) {
+        this.actionData = actionData;
+        this.actionDate = actionDate;
     }
 
-    public Action(String type, String name, String data, String date, String other) {
-        Type = type;
-        Name = name;
-        Data = data;
-        Date = date;
-        Other = other;
+    public Action(String actionType, String actionName, String actionData, String actionDate, String actionOther) {
+        this.actionType = actionType;
+        this.actionName = actionName;
+        this.actionData = actionData;
+        this.actionDate = actionDate;
+        this.actionOther = actionOther;
+    }
+
+    public Action(int actionId, String actionType, String actionName, String actionData, String actionDate,
+                  String actionOther) {
+        this.actionId = actionId;
+        this.actionType = actionType;
+        this.actionName = actionName;
+        this.actionData = actionData;
+        this.actionDate = actionDate;
+        this.actionOther = actionOther;
+    }
+
+    public int getActionId() {
+        return actionId;
+    }
+
+    public void setActionId(int actionId) {
+        this.actionId = actionId;
+    }
+
+    public String getActionType() {
+        return actionType;
+    }
+
+    public void setActionType(String actionType) {
+        this.actionType = actionType;
+    }
+
+    public String getActionName() {
+        return actionName;
+    }
+
+    public void setActionName(String actionName) {
+        this.actionName = actionName;
+    }
+
+    public String getActionData() {
+        return actionData;
+    }
+
+    public void setActionData(String actionData) {
+        this.actionData = actionData;
+    }
+
+    public String getActionDate() {
+        return actionDate;
+    }
+
+    public void setActionDate(String actionDate) {
+        this.actionDate = actionDate;
+    }
+
+    public String getActionOther() {
+        return actionOther;
+    }
+
+    public void setActionOther(String actionOther) {
+        this.actionOther = actionOther;
     }
 
     @Override
     public String toString() {
         return "Action{" +
-                "ActionId=" + ActionId +
-                ", Type='" + Type + '\'' +
-                ", Name='" + Name + '\'' +
-                ", Data='" + Data + '\'' +
-                ", Date='" + Date + '\'' +
-                ", Other='" + Other + '\'' +
+                "actionId=" + actionId +
+                ", actionType='" + actionType + '\'' +
+                ", actionName='" + actionName + '\'' +
+                ", actionData='" + actionData + '\'' +
+                ", actionDate='" + actionDate + '\'' +
+                ", actionOther='" + actionOther + '\'' +
                 '}';
-    }
-
-    public int getActionId() {
-        return ActionId;
-    }
-
-    public void setActionId(int actionId) {
-        ActionId = actionId;
-    }
-
-    public String getType() {
-        return Type;
-    }
-
-    public void setType(String type) {
-        Type = type;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getData() {
-        return Data;
-    }
-
-    public void setData(String data) {
-        Data = data;
-    }
-
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String date) {
-        Date = date;
-    }
-
-    public String getOther() {
-        return Other;
-    }
-
-    public void setOther(String other) {
-        Other = other;
     }
 }

@@ -26,14 +26,14 @@ public class UserController {
     @ResponseBody
     public Result Login(@RequestBody User user) {
         User L_user = user;
-        User S_user = userService.SelectUserForUsername(L_user.getUsername());
+        User S_user = userService.getUserForUsername(L_user.getUserName());
         if (S_user == null) {
             return new Result(Code.LOGIN_USERNAME_ERROR, "用户名错误或不存在");
         }
-        String S_password = myUtils.decrypted(S_user.getPassword());
-        String L_password = L_user.getPassword();
+        String S_password = myUtils.decrypted(S_user.getUserPassword());
+        String L_password = L_user.getUserPassword();
         if (S_password.equals(L_password)) {
-            String token = TokenUtils.getToken(S_user.getUsername(), String.valueOf(S_user.getUserid()));
+            String token = TokenUtils.getToken(S_user.getUserName(), String.valueOf(S_user.getUserId()));
             return new Result(Code.LOGIN_OK, "登录成功", token);
         } else {
             return new Result(Code.LOGIN_PASSWORD_ERROR, "用户名或密码错误");
@@ -47,11 +47,11 @@ public class UserController {
     public Result Register(@RequestBody User user) {
         User R_user = user;
         //查询相同用户名，看看是否存在用户 用户名是否重复
-        User check_username = userService.SelectUserForUsername(R_user.getUsername());
+        User check_username = userService.getUserForUsername(R_user.getUserName());
         if (check_username == null) {
             //对密码进行加密
-            R_user.setPassword(myUtils.encrypted(R_user.getPassword()));
-            boolean isAdd = userService.AddUser(R_user);
+            R_user.setUserPassword(myUtils.encrypted(R_user.getUserPassword()));
+            boolean isAdd = userService.addUser(R_user);
             if (isAdd) {
                 return new Result(Code.REGISTER_OK, "注册成功");
             } else {
@@ -67,7 +67,7 @@ public class UserController {
     @RequestMapping("/checkUsername")
     @ResponseBody
     public Result checkUsername(String username) {
-        User user = userService.SelectUserForUsername(username);
+        User user = userService.getUserForUsername(username);
         if (user == null) {
             return new Result(Code.REGISTER_USERNAME_OK, "用户名未重复");
         } else {
@@ -80,7 +80,7 @@ public class UserController {
     @RequestMapping("/getUserCount")
     @ResponseBody
     public Result getUserCount() {
-        int user_count = userService.SelectUserCount();
+        int user_count = userService.getUserCount();
         return new Result(Code.USER_COUNT_OK, "用户总数查询成功", user_count);
     }
 
@@ -91,7 +91,7 @@ public class UserController {
     public Result getAllUser(int pageSize, int currentPage) {
         //pageSize:每页显示的条数      currentPage:当前页数
         int offset = (currentPage - 1) * pageSize;//索引
-        List<User> AllUser = userService.SelectUserAll(offset, pageSize);
+        List<User> AllUser = userService.getUsers(offset, pageSize);
         if (AllUser != null) {
             return new Result(Code.USER_ALL_SELECT_OK, "所有用户查询成功", AllUser);
         } else {

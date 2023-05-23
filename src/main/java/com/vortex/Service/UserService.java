@@ -6,24 +6,24 @@ import java.util.List;
 
 public interface UserService {
     //查询所有用户
-    List<User> SelectUserAll(int offset, int pagesize);
+    List<User> getUsers(int offset, int pagesize);
 
     //根据用户id查询用户
-    User SelectUserForId(int userid);
+    User getUserForId(int userid);
 
     //根据用户姓名查询用户
-    User SelectUserForUsername(String username);
+    User getUserForUsername(String username);
 
     //注册用户
-    boolean AddUser(User user);
+    boolean addUser(User user);
 
     //根据用户id删除用户
-    boolean DeleteUser(int userid);
+    boolean deleteUser(int userid);
 
     //根据用户id更新用户
-    boolean UpdateUserForId(User user);
+    boolean updateUserForId(User user);
 
-    //
-    int SelectUserCount();
+    //获取用户总数
+    int getUserCount();
 
 }

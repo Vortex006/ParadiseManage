@@ -10,20 +10,20 @@ import java.util.List;
 public interface ActionService {
 
     //插入一条Action
-    boolean AddAction(Action action);
+    boolean addAction(Action action);
 
     //插入一条公告
-    boolean AddNotice(Action action);
+    boolean addNotice(Action action);
 
     //查询所有Action
-    List<Action> SelectAction();
+    List<Action> getActions();
 
     //查询所有公告
-    List<Action> SelectNotice();
+    List<Action> getNotices();
 
-    ArrayList<MenuMiddle> SelectMenu();
+    ArrayList<MenuMiddle> getMenus();
 
-    Menu SelectSubMenu(int SubMenuId);
+    Menu getSubMenu(int SubMenuId);
 
 
 }

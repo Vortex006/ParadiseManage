@@ -31,7 +31,7 @@ public class ActionController {
     @ResponseBody
     public Result setNotice(@RequestBody String notice) {
         Action Notice = new Action(notice, myUtils.formatDate(new Date()));
-        boolean flag = actionService.AddNotice(Notice);
+        boolean flag = actionService.addNotice(Notice);
         if (flag) {
             return new Result(Code.NOTICE_SET_OK, "公告修改成功");
         } else {
@@ -43,9 +43,9 @@ public class ActionController {
     @RequestMapping("/getNotice")
     @ResponseBody
     public Result getNotice() {
-        List<Action> Notices = actionService.SelectNotice();
+        List<Action> Notices = actionService.getNotices();
         if (Notices != null) {
-            String Last_Notice_Data = Notices.get(Notices.size() - 1).getData();
+            String Last_Notice_Data = Notices.get(Notices.size() - 1).getActionData();
             return new Result(Code.NOTICE_GET_OK, "公告获取成功", Last_Notice_Data);
         } else {
             return new Result(Code.NOTICE_GET_ERROR, "公告获取失败");
@@ -57,7 +57,7 @@ public class ActionController {
     @ResponseBody
     public Result getMenu() {
         //转接
-        ArrayList<MenuMiddle> menus = actionService.SelectMenu();
+        ArrayList<MenuMiddle> menus = actionService.getMenus();
         //菜单集合
         ArrayList<SubMenu> MenuList = new ArrayList<SubMenu>();
 
@@ -89,7 +89,7 @@ public class ActionController {
                 ArrayList<Menu> menuArrayList = new ArrayList<Menu>();
                 //调用方法，将二级菜单查出，并添加进二级菜单的数组
                 for (int k = 0; k < index.length; k++) {
-                    Menu demoMenu = actionService.SelectSubMenu(index[k]);
+                    Menu demoMenu = actionService.getSubMenu(index[k]);
                     menuArrayList.add(demoMenu);
                 }
                 //将二级菜单放入菜单中

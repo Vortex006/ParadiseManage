@@ -1,7 +1,6 @@
 package com.vortex.Utils;
 
 import org.jasypt.util.text.BasicTextEncryptor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,8 +8,6 @@ import java.util.Date;
 public class MyUtils {
     //加密密码的密钥
     private final String PasswordKey = "Paradise";
-    @Autowired
-    private MenuMapper menuMapper;
 
     //加密密码
     public String encrypted(String str) {

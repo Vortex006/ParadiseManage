@@ -10,19 +10,19 @@ import java.util.List;
 public interface ActionMapper {
 
     //插入一条Action
-    int AddAction(Action action);
+    int addAction(Action action);
 
     //插入一条公告
-    int AddNotice(Action action);
+    int addNotice(Action action);
 
     //查询所有Action
-    List<Action> SelectAction();
+    List<Action> getActions();
 
     //查询所有公告
-    List<Action> SelectNotice();
+    List<Action> getNotices();
 
-    ArrayList<MenuMiddle> SelectMenu();
+    ArrayList<MenuMiddle> getMenus();
 
-    Menu SelectSubMenu(int SubMenuId);
+    Menu getSubMenu(int SubMenuId);
 
 }

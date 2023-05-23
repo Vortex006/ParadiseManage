@@ -19,38 +19,38 @@ public class ActionServiceImpl implements ActionService {
 
 
     @Override
-    public boolean AddAction(Action action) {
-        int x = actionMapper.AddAction(action);
+    public boolean addAction(Action action) {
+        int x = actionMapper.addAction(action);
         return x > 0;
     }
 
     @Override
-    public boolean AddNotice(Action action) {
-        int x = actionMapper.AddNotice(action);
+    public boolean addNotice(Action action) {
+        int x = actionMapper.addNotice(action);
         return x > 0;
     }
 
     @Override
-    public List<Action> SelectAction() {
-        List<Action> actions = actionMapper.SelectAction();
+    public List<Action> getActions() {
+        List<Action> actions = actionMapper.getActions();
         return actions;
     }
 
     @Override
-    public List<Action> SelectNotice() {
-        List<Action> actions = actionMapper.SelectNotice();
+    public List<Action> getNotices() {
+        List<Action> actions = actionMapper.getNotices();
         return actions;
     }
 
     @Override
-    public ArrayList<MenuMiddle> SelectMenu() {
-        ArrayList<MenuMiddle> menulist = actionMapper.SelectMenu();
+    public ArrayList<MenuMiddle> getMenus() {
+        ArrayList<MenuMiddle> menulist = actionMapper.getMenus();
         return menulist;
     }
 
     @Override
-    public Menu SelectSubMenu(int SubMenuId) {
-        Menu subMenu = actionMapper.SelectSubMenu(SubMenuId);
+    public Menu getSubMenu(int SubMenuId) {
+        Menu subMenu = actionMapper.getSubMenu(SubMenuId);
         return subMenu;
     }
 }

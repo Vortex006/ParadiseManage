@@ -14,38 +14,45 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public List<User> SelectUserAll(int offset, int pagesize) {
-        List<User> users = userMapper.SelectUserAll(offset, pagesize);
+    @Override
+    public List<User> getUsers(int offset, int pagesize) {
+        List<User> users = userMapper.getUsers(offset, pagesize);
         return users;
     }
 
-    public User SelectUserForId(int userid) {
-        User user = userMapper.SelectUserForId(userid);
+    @Override
+    public User getUserForId(int userid) {
+        User user = userMapper.getUserForId(userid);
         return user;
     }
 
-    public User SelectUserForUsername(String username) {
-        User user = userMapper.SelectUserForUsername(username);
+    @Override
+    public User getUserForUsername(String username) {
+        User user = userMapper.getUserForUsername(username);
         return user;
     }
 
-    public boolean AddUser(User user) {
-        int i = userMapper.AddUser(user);
+    @Override
+    public boolean addUser(User user) {
+        int i = userMapper.addUser(user);
         return i > 0;
     }
 
-    public boolean DeleteUser(int userid) {
-        int i = userMapper.DeleteUser(userid);
+    @Override
+    public boolean deleteUser(int userid) {
+        int i = userMapper.deleteUser(userid);
         return i > 0;
     }
 
-    public boolean UpdateUserForId(User user) {
-        int i = userMapper.UpdateUserForId(user);
+    @Override
+    public boolean updateUserForId(User user) {
+        int i = userMapper.updateUserForId(user);
         return i > 0;
     }
 
-    public int SelectUserCount() {
-        int i = userMapper.SelectUserCount();
+    @Override
+    public int getUserCount() {
+        int i = userMapper.getUserCount();
         return i;
     }
 }
