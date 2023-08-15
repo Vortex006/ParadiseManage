@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD com.vortex.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--Mapper命名空间,这里调用的是接口类-->
+<mapper namespace="com.vortex.Mapper.UserMapper">
+
+    <!--查询所有用户-->
+    <select id="getUsers" resultType="com.vortex.Entity.User">
+        SELECT *
+        FROM paradise.user;
+    </select>
+
+    <!--分页查询所有用户-->
+    <select id="getUsersLimit" resultType="com.vortex.Entity.User">
+        SELECT *
+        FROM paradise.user
+        limit ${offset},${pageSize};
+    </select>
+
+    <!--根据用户ID查询用户-->
+    <select id="getUserForUserId" resultType="com.vortex.Entity.User">
+        SELECT *
+        FROM paradise.user
+        WHERE UserId = #{userId};
+    </select>
+
+    <!--根据用户名查询用户-->
+    <select id="getUserForUserName" resultType="com.vortex.Entity.User">
+        SELECT *
+        FROM paradise.user
+        WHERE UserName = #{userName};
+    </select>
+
+    <!--根据用户ID删除用户-->
+    <delete id="deleteUserForUserId">
+        DELETE
+        FROM paradise.user
+        WHERE UserId = #{userId};
+    </delete>
+
+    <!--添加用户-->
+    <insert id="addUser">
+        Insert Into paradise.User
+        (UserName, UserPassword, UserSalt, UserCreateDate, UserLastLoginDate, UserState,
+         UserPermission, UserEmail, UserPhone)
+        VALUES (#{userName}, #{userPassword}, #{userSalt}, #{userCreateDate}, #{userLastLoginDate}, #{userState},
+                #{userPermission}, #{userEmail}, #{userPhone});
+    </insert>
+
+    <!--根据用户ID更新用户-->
+    <update id="updateUserForUserId">
+        UPDATE paradise.user
+        set UserName=#{userName},
+            UserPassword=#{userPassword},
+            UserSalt=#{userSalt},
+            UserCreateDate=#{userCreateDate},
+            UserLastLoginDate=#{userLastLoginDate},
+            UserState=#{userState},
+            UserPermission=#{userPermission},
+            UserEmail=#{userEmail},
+            UserPhone=#{userPhone}
+        where UserId = #{userId};
+    </update>
+
+    <select id="getUserCount" resultType="int">
+        SELECT count(*)
+        FROM paradise.user;
+    </select>
+
+</mapper>
