@@ -2,7 +2,7 @@ package com.vortex.Controller;
 
 import com.vortex.Entity.Menu.FullMenu;
 import com.vortex.Entity.Menu.MainMenu;
-import com.vortex.Entity.Menu.SubMenu;
+import com.vortex.Entity.Menu.SubMenuDo;
 import com.vortex.Service.MenuService;
 import com.vortex.Util.Code;
 import com.vortex.Util.Result;
@@ -28,24 +28,24 @@ public class MenuController {
     @ResponseBody
     public Result listMenus() {
         List<FullMenu> fullMenuList = new ArrayList<>();
-        List<MainMenu> mainMenus = menuService.listMainMenus();
-        for (MainMenu mainMenu : mainMenus) {
+        List<MainMenu> mainMenuList = menuService.listMainMenus();
+        for (MainMenu mainMenu : mainMenuList) {
             FullMenu fullMenu = new FullMenu();
             fullMenu.setFullMenuId(mainMenu.getMainMenuId());
             fullMenu.setFullMenuName(mainMenu.getMainMenuName());
             fullMenu.setFullMenuIcon(mainMenu.getMainMenuIcon());
             fullMenu.setFullMenuIndex(mainMenu.getMainMenuIndex());
             fullMenu.setFullMenuRoute(mainMenu.getMainMenuRoute());
-            ArrayList<SubMenu> fullSubMenuList = new ArrayList<>();
+            ArrayList<SubMenuDo> fullSubMenuDoList = new ArrayList<>();
             if (mainMenu.getMainMenuChildren() != null) {
                 String childStr = mainMenu.getMainMenuChildren();
                 String[] child = childStr.split(",");
                 for (String s : child) {
-                    fullSubMenuList.add(menuService.getSubMenuById(s));
+                    fullSubMenuDoList.add(menuService.getSubMenuById(s));
                 }
-                fullMenu.setFullMenuChildren(fullSubMenuList);
+                fullMenu.setFullMenuChildList(fullSubMenuDoList);
             } else {
-                fullMenu.setFullMenuChildren(null);
+                fullMenu.setFullMenuChildList(null);
             }
             fullMenuList.add(fullMenu);
         }
@@ -55,15 +55,15 @@ public class MenuController {
     @RequestMapping("/listMainMenus")
     @ResponseBody
     public Result listMainMenus() {
-        List<MainMenu> mainMenus = menuService.listMainMenus();
-        return new Result(Code.OK, "主菜单获取成功", mainMenus);
+        List<MainMenu> mainMenuList = menuService.listMainMenus();
+        return new Result(Code.OK, "主菜单获取成功", mainMenuList);
     }
 
     @RequestMapping("/getSubMenuById")
     @ResponseBody
     public Result getSubMenuById(String subMenuId) {
-        SubMenu subMenu = menuService.getSubMenuById(subMenuId);
-        return new Result(Code.OK, "主菜单获取成功", subMenu);
+        SubMenuDo subMenuDo = menuService.getSubMenuById(subMenuId);
+        return new Result(Code.OK, "主菜单获取成功", subMenuDo);
     }
 
 }

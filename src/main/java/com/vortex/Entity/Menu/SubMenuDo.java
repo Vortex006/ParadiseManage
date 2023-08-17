@@ -1,16 +1,16 @@
 package com.vortex.Entity.Menu;
 
-public class SubMenu {
+public class SubMenuDo {
     private int subMenuId;
     private String subMenuName;
     private String subMenuIcon;
     private String subMenuIndex;
     private String subMenuRoute;
 
-    public SubMenu() {
+    public SubMenuDo() {
     }
 
-    public SubMenu(int subMenuId, String subMenuName, String subMenuIcon, String subMenuIndex, String subMenuRoute) {
+    public SubMenuDo(int subMenuId, String subMenuName, String subMenuIcon, String subMenuIndex, String subMenuRoute) {
         this.subMenuId = subMenuId;
         this.subMenuName = subMenuName;
         this.subMenuIcon = subMenuIcon;

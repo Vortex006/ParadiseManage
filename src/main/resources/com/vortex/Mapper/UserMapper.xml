@@ -7,52 +7,51 @@
 <mapper namespace="com.vortex.Mapper.UserMapper">
 
     <!--查询所有用户-->
-    <select id="getUsers" resultType="com.vortex.Entity.User">
+    <select id="listUsers" resultType="com.vortex.Entity.UserDo">
         SELECT *
         FROM paradise.user;
     </select>
 
     <!--分页查询所有用户-->
-    <select id="getUsersLimit" resultType="com.vortex.Entity.User">
+    <select id="limitUsers" resultType="com.vortex.Entity.UserDo">
         SELECT *
         FROM paradise.user
         limit ${offset},${pageSize};
     </select>
 
     <!--根据用户ID查询用户-->
-    <select id="getUserForUserId" resultType="com.vortex.Entity.User">
+    <select id="getUserById" resultType="com.vortex.Entity.UserDo">
         SELECT *
         FROM paradise.user
         WHERE UserId = #{userId};
     </select>
 
     <!--根据用户名查询用户-->
-    <select id="getUserForUserName" resultType="com.vortex.Entity.User">
+    <select id="getUserByName" resultType="com.vortex.Entity.UserDo">
         SELECT *
         FROM paradise.user
         WHERE UserName = #{userName};
     </select>
 
     <!--根据用户ID删除用户-->
-    <delete id="deleteUserForUserId">
+    <delete id="deleteUserById">
         DELETE
         FROM paradise.user
         WHERE UserId = #{userId};
     </delete>
 
     <!--添加用户-->
-    <insert id="addUser">
-        Insert Into paradise.User
-        (UserName, UserPassword, UserSalt, UserCreateDate, UserLastLoginDate, UserState,
-         UserPermission, UserEmail, UserPhone)
+    <insert id="saveUser">
+        Insert Into paradise.User (UserName, UserPassword, UserSalt, UserCreateDate, UserLastLoginDate, UserState,
+                                   UserPermission, UserEmail, UserPhone)
         VALUES (#{userName}, #{userPassword}, #{userSalt}, #{userCreateDate}, #{userLastLoginDate}, #{userState},
                 #{userPermission}, #{userEmail}, #{userPhone});
     </insert>
 
     <!--根据用户ID更新用户-->
-    <update id="updateUserForUserId">
+    <update id="updateUser">
         UPDATE paradise.user
-        set UserName=#{userName},
+        SET UserName=#{userName},
             UserPassword=#{userPassword},
             UserSalt=#{userSalt},
             UserCreateDate=#{userCreateDate},
@@ -61,10 +60,10 @@
             UserPermission=#{userPermission},
             UserEmail=#{userEmail},
             UserPhone=#{userPhone}
-        where UserId = #{userId};
+        WHERE UserId = #{userId};
     </update>
 
-    <select id="getUserCount" resultType="int">
+    <select id="countUser" resultType="int">
         SELECT count(*)
         FROM paradise.user;
     </select>

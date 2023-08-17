@@ -1,6 +1,6 @@
 package com.vortex.Service.impl;
 
-import com.vortex.Entity.Notice;
+import com.vortex.Entity.NoticeDo;
 import com.vortex.Mapper.NoticeMapper;
 import com.vortex.Service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,8 @@ public class NoticeServiceImpl implements NoticeService {
     private NoticeMapper noticeMapper;
 
     @Override
-    public List<Notice> getNotices() {
-        return noticeMapper.getNotices();
+    public List<NoticeDo> listNotices() {
+        List<NoticeDo> noticeDoList = noticeMapper.listNotices();
+        return noticeDoList;
     }
 }

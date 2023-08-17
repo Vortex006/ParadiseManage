@@ -1,6 +1,6 @@
 package com.vortex.Entity;
 
-public class God {
+public class GodDo {
     private int godId;//神仙ID
     private String godName;//神仙姓名
     private char godSex;//神仙性别
@@ -10,11 +10,11 @@ public class God {
     private Long godMerit;//神仙功德
     private String godLocation;//神仙住址
 
-    public God() {
+    public GodDo() {
     }
 
-    public God(String godName, char godSex, String godType, String godDepartment, String godJob, Long godMerit,
-               String godLocation) {
+    public GodDo(String godName, char godSex, String godType, String godDepartment, String godJob, Long godMerit,
+                 String godLocation) {
         this.godName = godName;
         this.godSex = godSex;
         this.godType = godType;
@@ -24,8 +24,8 @@ public class God {
         this.godLocation = godLocation;
     }
 
-    public God(int godId, String godName, char godSex, String godType, String godDepartment, String godJob,
-               Long godMerit, String godLocation) {
+    public GodDo(int godId, String godName, char godSex, String godType, String godDepartment, String godJob,
+                 Long godMerit, String godLocation) {
         this.godId = godId;
         this.godName = godName;
         this.godSex = godSex;

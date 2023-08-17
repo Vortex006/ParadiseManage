@@ -1,19 +1,19 @@
 package com.vortex.Entity;
 
-public class Department {
+public class DepartmentDo {
     private int departmentId;//部门ID
     private String departmentName;//部门名称
     private String departmentInfo;//部门描述
 
-    public Department() {
+    public DepartmentDo() {
     }
 
-    public Department(String departmentName, String departmentInfo) {
+    public DepartmentDo(String departmentName, String departmentInfo) {
         this.departmentName = departmentName;
         this.departmentInfo = departmentInfo;
     }
 
-    public Department(int departmentId, String departmentName, String departmentInfo) {
+    public DepartmentDo(int departmentId, String departmentName, String departmentInfo) {
         this.departmentId = departmentId;
         this.departmentName = departmentName;
         this.departmentInfo = departmentInfo;

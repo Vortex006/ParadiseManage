@@ -1,33 +1,33 @@
 package com.vortex.Service;
 
-import com.vortex.Entity.User;
-import org.apache.ibatis.annotations.Param;
+import com.vortex.Entity.UserDo;
 
 import java.util.List;
 
 public interface UserService {
+
     //查询所有用户
-    List<User> getUsers();
+    List<UserDo> listUsers();
 
     //分页查询所有用户
-    List<User> getUsersLimit(@Param("offset") int offset, @Param("pageSize") int pageSize);
+    List<UserDo> limitUsers(int offset, int pageSize);
 
     //根据用户ID查询用户
-    User getUserForUserId(int userId);
+    UserDo getUserById(int userId);
 
     //根据用户名查询用户
-    User getUserForUserName(String userName);
+    UserDo getUserByName(String userName);
 
     //添加用户
-    boolean addUser(User user);
+    boolean saveUser(UserDo userDo);
 
     //根据用户ID删除用户
-    boolean deleteUserForUserId(int userId);
+    boolean deleteUserById(int userId);
 
     //根据用户ID更新用户信息
-    boolean updateUser(User user);
+    boolean updateUser(UserDo userDo);
 
     //获取用户数量
-    int getUserCount();
+    int countUser();
 
 }

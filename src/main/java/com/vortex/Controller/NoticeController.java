@@ -1,6 +1,6 @@
 package com.vortex.Controller;
 
-import com.vortex.Entity.Notice;
+import com.vortex.Entity.NoticeDo;
 import com.vortex.Service.NoticeService;
 import com.vortex.Util.Code;
 import com.vortex.Util.Result;
@@ -21,10 +21,10 @@ public class NoticeController {
         this.noticeService = noticeService;
     }
 
-    @RequestMapping("/getNotices")
+    @RequestMapping("/listNotices")
     @ResponseBody
-    public Result getNotices() {
-        List<Notice> notices = noticeService.getNotices();
-        return new Result(Code.NOTICE_GET_OK, "公告获取成功", notices);
+    public Result listNotices() {
+        List<NoticeDo> noticeList = noticeService.listNotices();
+        return new Result(Code.NOTICE_GET_OK, "公告获取成功", noticeList);
     }
 }

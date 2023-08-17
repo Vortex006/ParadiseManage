@@ -1,23 +1,23 @@
 package com.vortex.Entity;
 
-public class Notice {
+public class NoticeDo {
     private int noticeId;//公告ID
     private String noticeTitle;//公告标题
     private String noticeContent;//公告内容
     private String noticeCreateDate;//公告创建日期
     private char noticeState;//公告状态
 
-    public Notice() {
+    public NoticeDo() {
     }
 
-    public Notice(String noticeTitle, String noticeContent, String noticeCreateDate, char noticeState) {
+    public NoticeDo(String noticeTitle, String noticeContent, String noticeCreateDate, char noticeState) {
         this.noticeTitle = noticeTitle;
         this.noticeContent = noticeContent;
         this.noticeCreateDate = noticeCreateDate;
         this.noticeState = noticeState;
     }
 
-    public Notice(int noticeId, String noticeTitle, String noticeContent, String noticeCreateDate, char noticeState) {
+    public NoticeDo(int noticeId, String noticeTitle, String noticeContent, String noticeCreateDate, char noticeState) {
         this.noticeId = noticeId;
         this.noticeTitle = noticeTitle;
         this.noticeContent = noticeContent;

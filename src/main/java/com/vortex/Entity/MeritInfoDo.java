@@ -1,24 +1,24 @@
 package com.vortex.Entity;
 
-public class MeritInfo {
+public class MeritInfoDo {
     private int meritInfoId;//功德详情ID
     private int meritInfoForUserId;//被操作功德的用户ID
     private int meritInfoRootId;//操作功德的系统用户ID
     private String meritInfoDate;//功德操作时间
     private String meritInfoContent;//具体操作描述
 
-    public MeritInfo() {
+    public MeritInfoDo() {
     }
 
-    public MeritInfo(int meritInfoForUserId, int meritInfoRootId, String meritInfoDate, String meritInfoContent) {
+    public MeritInfoDo(int meritInfoForUserId, int meritInfoRootId, String meritInfoDate, String meritInfoContent) {
         this.meritInfoForUserId = meritInfoForUserId;
         this.meritInfoRootId = meritInfoRootId;
         this.meritInfoDate = meritInfoDate;
         this.meritInfoContent = meritInfoContent;
     }
 
-    public MeritInfo(int meritInfoId, int meritInfoForUserId, int meritInfoRootId, String meritInfoDate,
-                     String meritInfoContent) {
+    public MeritInfoDo(int meritInfoId, int meritInfoForUserId, int meritInfoRootId, String meritInfoDate,
+                       String meritInfoContent) {
         this.meritInfoId = meritInfoId;
         this.meritInfoForUserId = meritInfoForUserId;
         this.meritInfoRootId = meritInfoRootId;

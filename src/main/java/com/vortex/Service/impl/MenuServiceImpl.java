@@ -1,7 +1,7 @@
 package com.vortex.Service.impl;
 
 import com.vortex.Entity.Menu.MainMenu;
-import com.vortex.Entity.Menu.SubMenu;
+import com.vortex.Entity.Menu.SubMenuDo;
 import com.vortex.Mapper.MenuMapper;
 import com.vortex.Service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +16,15 @@ public class MenuServiceImpl implements MenuService {
     private MenuMapper menuMapper;
 
     @Override
-    public SubMenu getSubMenuById(String subMenuId) {
-        SubMenu subMenu = menuMapper.getSubMenuById(subMenuId);
-        return subMenu;
+    public SubMenuDo getSubMenuById(String subMenuId) {
+        SubMenuDo subMenuDo = menuMapper.getSubMenuById(subMenuId);
+        return subMenuDo;
     }
 
     @Override
     public List<MainMenu> listMainMenus() {
-        List<MainMenu> mainMenus = menuMapper.listMainMenus();
-        return mainMenus;
+        List<MainMenu> mainMenuList = menuMapper.listMainMenus();
+        return mainMenuList;
     }
 }
 

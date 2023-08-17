@@ -1,23 +1,23 @@
 package com.vortex.Entity;
 
-public class Job {
+public class JobDo {
     private int jobId;//职位ID
     private String jobName;//职位名称
     private int jobCount;//职位数量
     private int jobForDepartmentId;//职位所属部门
     private String jobInfo;//职位描述
 
-    public Job() {
+    public JobDo() {
     }
 
-    public Job(String jobName, int jobCount, int jobForDepartmentId, String jobInfo) {
+    public JobDo(String jobName, int jobCount, int jobForDepartmentId, String jobInfo) {
         this.jobName = jobName;
         this.jobCount = jobCount;
         this.jobForDepartmentId = jobForDepartmentId;
         this.jobInfo = jobInfo;
     }
 
-    public Job(int jobId, String jobName, int jobCount, int jobForDepartmentId, String jobInfo) {
+    public JobDo(int jobId, String jobName, int jobCount, int jobForDepartmentId, String jobInfo) {
         this.jobId = jobId;
         this.jobName = jobName;
         this.jobCount = jobCount;

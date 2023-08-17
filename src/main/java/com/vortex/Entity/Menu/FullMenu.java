@@ -4,83 +4,83 @@ import java.util.ArrayList;
 
 public class FullMenu {
 
-    private int FullMenuId;
-    private String FullMenuName;
-    private String FullMenuIcon;
-    private String FullMenuIndex;
-    private String FullMenuRoute;
-    private ArrayList<SubMenu> FullMenuChildren;
+    private int fullMenuId;
+    private String fullMenuName;
+    private String fullMenuIcon;
+    private String fullMenuIndex;
+    private String fullMenuRoute;
+    private ArrayList<SubMenuDo> fullMenuChildList;
 
     public FullMenu() {
     }
 
     public FullMenu(int fullMenuId, String fullMenuName, String fullMenuIcon, String fullMenuIndex,
-                    String fullMenuRoute, ArrayList<SubMenu> fullMenuChildren) {
-        FullMenuId = fullMenuId;
-        FullMenuName = fullMenuName;
-        FullMenuIcon = fullMenuIcon;
-        FullMenuIndex = fullMenuIndex;
-        FullMenuRoute = fullMenuRoute;
-        FullMenuChildren = fullMenuChildren;
+                    String fullMenuRoute, ArrayList<SubMenuDo> fullMenuChildList) {
+        this.fullMenuId = fullMenuId;
+        this.fullMenuName = fullMenuName;
+        this.fullMenuIcon = fullMenuIcon;
+        this.fullMenuIndex = fullMenuIndex;
+        this.fullMenuRoute = fullMenuRoute;
+        this.fullMenuChildList = fullMenuChildList;
     }
 
     public int getFullMenuId() {
-        return FullMenuId;
+        return fullMenuId;
     }
 
     public void setFullMenuId(int fullMenuId) {
-        FullMenuId = fullMenuId;
+        this.fullMenuId = fullMenuId;
     }
 
     public String getFullMenuName() {
-        return FullMenuName;
+        return fullMenuName;
     }
 
     public void setFullMenuName(String fullMenuName) {
-        FullMenuName = fullMenuName;
+        this.fullMenuName = fullMenuName;
     }
 
     public String getFullMenuIcon() {
-        return FullMenuIcon;
+        return fullMenuIcon;
     }
 
     public void setFullMenuIcon(String fullMenuIcon) {
-        FullMenuIcon = fullMenuIcon;
+        this.fullMenuIcon = fullMenuIcon;
     }
 
     public String getFullMenuIndex() {
-        return FullMenuIndex;
+        return fullMenuIndex;
     }
 
     public void setFullMenuIndex(String fullMenuIndex) {
-        FullMenuIndex = fullMenuIndex;
+        this.fullMenuIndex = fullMenuIndex;
     }
 
     public String getFullMenuRoute() {
-        return FullMenuRoute;
+        return fullMenuRoute;
     }
 
     public void setFullMenuRoute(String fullMenuRoute) {
-        FullMenuRoute = fullMenuRoute;
+        this.fullMenuRoute = fullMenuRoute;
     }
 
-    public ArrayList<SubMenu> getFullMenuChildren() {
-        return FullMenuChildren;
+    public ArrayList<SubMenuDo> getFullMenuChildList() {
+        return fullMenuChildList;
     }
 
-    public void setFullMenuChildren(ArrayList<SubMenu> fullMenuChildren) {
-        FullMenuChildren = fullMenuChildren;
+    public void setFullMenuChildList(ArrayList<SubMenuDo> fullMenuChildList) {
+        this.fullMenuChildList = fullMenuChildList;
     }
 
     @Override
     public String toString() {
         return "FullMenu{" +
-                "FullMenuId=" + FullMenuId +
-                ", FullMenuName='" + FullMenuName + '\'' +
-                ", FullMenuIcon='" + FullMenuIcon + '\'' +
-                ", FullMenuIndex='" + FullMenuIndex + '\'' +
-                ", FullMenuRoute='" + FullMenuRoute + '\'' +
-                ", FullMenuChildren=" + FullMenuChildren +
+                "fullMenuId=" + fullMenuId +
+                ", fullMenuName='" + fullMenuName + '\'' +
+                ", fullMenuIcon='" + fullMenuIcon + '\'' +
+                ", fullMenuIndex='" + fullMenuIndex + '\'' +
+                ", fullMenuRoute='" + fullMenuRoute + '\'' +
+                ", fullMenuChildList=" + fullMenuChildList +
                 '}';
     }
 }

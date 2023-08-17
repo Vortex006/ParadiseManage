@@ -1,6 +1,6 @@
 package com.vortex.Service.impl;
 
-import com.vortex.Entity.User;
+import com.vortex.Entity.UserDo;
 import com.vortex.Mapper.UserMapper;
 import com.vortex.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,54 +11,55 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired(required = false)
+    @Autowired
     private UserMapper userMapper;
 
+
     @Override
-    public List<User> getUsers() {
-        List<User> users = userMapper.getUsers();
-        return users;
+    public List<UserDo> listUsers() {
+        List<UserDo> userList = userMapper.listUsers();
+        return userList;
     }
 
     @Override
-    public List<User> getUsersLimit(int offset, int pageSize) {
-        List<User> usersLimit = userMapper.getUsersLimit(offset, pageSize);
-        return usersLimit;
+    public List<UserDo> limitUsers(int offset, int pageSize) {
+        List<UserDo> userLimitList = userMapper.limitUsers(offset, pageSize);
+        return userLimitList;
     }
 
     @Override
-    public User getUserForUserId(int userId) {
-        User user = userMapper.getUserForUserId(userId);
+    public UserDo getUserById(int userId) {
+        UserDo user = userMapper.getUserById(userId);
         return user;
     }
 
     @Override
-    public User getUserForUserName(String userName) {
-        User user = userMapper.getUserForUserName(userName);
+    public UserDo getUserByName(String userName) {
+        UserDo user = userMapper.getUserByName(userName);
         return user;
     }
 
     @Override
-    public boolean addUser(User user) {
-        int x = userMapper.addUser(user);
-        return x > 0;
+    public boolean saveUser(UserDo userDo) {
+        int i = userMapper.saveUser(userDo);
+        return i > 0;
     }
 
     @Override
-    public boolean deleteUserForUserId(int userId) {
-        int x = userMapper.deleteUserForUserId(userId);
-        return x > 0;
+    public boolean deleteUserById(int userId) {
+        int i = userMapper.deleteUserById(userId);
+        return i > 0;
     }
 
     @Override
-    public boolean updateUser(User user) {
-        int x = userMapper.updateUser(user);
-        return x > 0;
+    public boolean updateUser(UserDo userDo) {
+        int i = userMapper.updateUser(userDo);
+        return i > 0;
     }
 
     @Override
-    public int getUserCount() {
-        int userCount = userMapper.getUserCount();
+    public int countUser() {
+        int userCount = userMapper.countUser();
         return userCount;
     }
 }

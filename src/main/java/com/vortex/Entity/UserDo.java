@@ -1,6 +1,6 @@
 package com.vortex.Entity;
 
-public class User {
+public class UserDo {
     private int userId;//用户ID
     private String userName;//用户姓名
     private String userPassword;//用户密码
@@ -12,11 +12,11 @@ public class User {
     private String userEmail;//用户邮箱
     private String userPhone;//用户手机号
 
-    public User() {
+    public UserDo() {
     }
 
-    public User(String userName, String userPassword, String userSalt, String userCreateDate,
-                String userLastLoginDate, short userState, int userPermission, String userEmail, String userPhone) {
+    public UserDo(String userName, String userPassword, String userSalt, String userCreateDate,
+                  String userLastLoginDate, short userState, int userPermission, String userEmail, String userPhone) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userSalt = userSalt;
@@ -28,8 +28,8 @@ public class User {
         this.userPhone = userPhone;
     }
 
-    public User(int userId, String userName, String userPassword, String userSalt, String userCreateDate,
-                String userLastLoginDate, short userState, int userPermission, String userEmail, String userPhone) {
+    public UserDo(int userId, String userName, String userPassword, String userSalt, String userCreateDate,
+                  String userLastLoginDate, short userState, int userPermission, String userEmail, String userPhone) {
         this.userId = userId;
         this.userName = userName;
         this.userPassword = userPassword;

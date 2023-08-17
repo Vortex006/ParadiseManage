@@ -1,19 +1,19 @@
 package com.vortex.Entity;
 
-public class GodType {
+public class GodTypeDo {
     private int godTypeId;//神仙类型ID
     private String godTypeName;//神仙类型名称
     private String godTypeInfo;//神仙类型描述
 
-    public GodType() {
+    public GodTypeDo() {
     }
 
-    public GodType(String godTypeName, String godTypeInfo) {
+    public GodTypeDo(String godTypeName, String godTypeInfo) {
         this.godTypeName = godTypeName;
         this.godTypeInfo = godTypeInfo;
     }
 
-    public GodType(int godTypeId, String godTypeName, String godTypeInfo) {
+    public GodTypeDo(int godTypeId, String godTypeName, String godTypeInfo) {
         this.godTypeId = godTypeId;
         this.godTypeName = godTypeName;
         this.godTypeInfo = godTypeInfo;

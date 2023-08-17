@@ -12,15 +12,15 @@
         <result column="MenuChild" property="mainMenuChildren"/>
     </resultMap>
 
-    <select id="getSubMenuById" resultType="com.vortex.Entity.Menu.SubMenu">
-        select *
-        from paradise.submenu
-        where SubMenuId = #{subMenuId};
+    <select id="getSubMenuById" resultType="com.vortex.Entity.Menu.SubMenuDo">
+        SELECT *
+        FROM paradise.submenu
+        WHERE SubMenuId = #{subMenuId};
     </select>
 
     <select id="listMainMenus" resultMap="MainMenuMap">
-        select *
-        from paradise.menu;
+        SELECT *
+        FROM paradise.menu;
     </select>
 
 </mapper>

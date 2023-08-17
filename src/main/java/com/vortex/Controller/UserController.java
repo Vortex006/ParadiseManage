@@ -1,6 +1,6 @@
 package com.vortex.Controller;
 
-import com.vortex.Entity.User;
+import com.vortex.Entity.UserDo;
 import com.vortex.Service.UserService;
 import com.vortex.Util.Code;
 import com.vortex.Util.Result;
@@ -22,30 +22,33 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/getUsers")
+    //获取所有用户
+    @RequestMapping("/listUsers")
     @ResponseBody
-    public Result getUsers() {
-        List<User> users = userService.getUsers();
-        return new Result(Code.USER_ALL_SELECT_OK, "查询用户成功", users);
+    public Result listUsers() {
+        List<UserDo> userList = userService.listUsers();
+        return new Result(Code.USER_ALL_SELECT_OK, "查询用户成功", userList);
     }
 
-    @RequestMapping("/getUsersLimit")
+    //分页获取用户
+    @RequestMapping("/limitUsers")
     @ResponseBody
-    public Result getUsersLimit(int pageSize, int currentPage) {
+    public Result limitUsers(int pageSize, int currentPage) {
         //pageSize:每页显示的条数      currentPage:当前页数
         int offset = (currentPage - 1) * pageSize;//索引
-        List<User> AllUser = userService.getUsersLimit(offset, pageSize);
-        if (AllUser != null) {
-            return new Result(Code.USER_ALL_SELECT_OK, "查询用户成功", AllUser);
+        List<UserDo> userLimitList = userService.limitUsers(offset, pageSize);
+        if (userLimitList != null) {
+            return new Result(Code.USER_ALL_SELECT_OK, "查询用户成功", userLimitList);
         } else {
             return new Result(Code.USER_ALL_SELECT_ERROR, "查询用户失败");
         }
     }
 
-    @RequestMapping("/getUserForUserId")
+    //根据用户ID获取用户
+    @RequestMapping("/getUserById")
     @ResponseBody
-    public Result getUserForUserId(int userId) {
-        User user = userService.getUserForUserId(userId);
+    public Result getUserById(int userId) {
+        UserDo user = userService.getUserById(userId);
         if (user != null) {
             return new Result(Code.GOD_SELECT_BYGODID_OK, "查询用户成功", user);
         } else {
@@ -57,7 +60,7 @@ public class UserController {
     @RequestMapping("/checkUsername")
     @ResponseBody
     public Result checkUsername(String username) {
-        User user = userService.getUserForUserName(username);
+        UserDo user = userService.getUserByName(username);
         if (user == null) {
             return new Result(Code.REGISTER_USERNAME_OK, "用户名未重复");
         } else {
@@ -65,11 +68,23 @@ public class UserController {
         }
     }
 
-    //添加用户
-    @RequestMapping("/addUser")
+    //验证用户名是否重复
+    @RequestMapping("/getUserByName")
     @ResponseBody
-    public Result addUser(@RequestBody User user) {
-        boolean isAdd = userService.addUser(user);
+    public Result getUserByName(String username) {
+        UserDo user = userService.getUserByName(username);
+        if (user == null) {
+            return new Result(Code.OK, "获取用户成功");
+        } else {
+            return new Result(Code.ERROR, "获取用户失败");
+        }
+    }
+
+    //添加用户
+    @RequestMapping("/saveUser")
+    @ResponseBody
+    public Result saveUser(@RequestBody UserDo userDo) {
+        boolean isAdd = userService.saveUser(userDo);
         if (isAdd) {
             return new Result(Code.USER_ADD_OK, "新增用户成功");
         } else {
@@ -80,8 +95,8 @@ public class UserController {
     //根据用户ID删除用户
     @RequestMapping("/deleteUserById")
     @ResponseBody
-    public Result deleteUserByUserId(int userId) {
-        boolean isDelete = userService.deleteUserForUserId(userId);
+    public Result deleteUserById(int userId) {
+        boolean isDelete = userService.deleteUserById(userId);
         if (isDelete) {
             return new Result(Code.USER_DELETE_OK, "删除用户成功");
         } else {
@@ -89,24 +104,11 @@ public class UserController {
         }
     }
 
-//    //根据用户ID的集合删除用户
-//    @RequestMapping("/deleteUserForUserIdList")
-//    @ResponseBody
-//    public Result deleteUserForUserIdList(List<Integer> userIdList) {
-//        for(int userId:userIdList){
-//            boolean isDelete = userService.deleteUserForUserId(userId);
-//            if(isDelete){
-//                return new Result(Code.USER_DELETE_OK, "删除用户成功");
-//            }else {
-//                return new Result(Code.USER_DELETE_ERROR, "删除用户异常");
-//            }
-//        }
-//    }
-
+    //更新用户
     @RequestMapping("/updateUser")
     @ResponseBody
-    public Result updateUser(@RequestBody User user) {
-        boolean isUpdate = userService.updateUser(user);
+    public Result updateUser(@RequestBody UserDo userDo) {
+        boolean isUpdate = userService.updateUser(userDo);
         if (isUpdate) {
             return new Result(Code.USER_UPDATE_OK, "更新用户成功");
         } else {
@@ -114,10 +116,11 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/getUserCount")
+    //获取用户总数
+    @RequestMapping("/countUser")
     @ResponseBody
-    public Result getUserCount() {
-        int userCount = userService.getUserCount();
+    public Result countUser() {
+        int userCount = userService.countUser();
         if (userCount >= 0) {
             return new Result(Code.USER_COUNT_OK, "查询用户总数成功", userCount);
         } else {
