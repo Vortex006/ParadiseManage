@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vortex.Mapper.GodMapper">
+
+    <!--查询所有神仙-->
+    <select id="listGods" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god;
+    </select>
+
+    <!--分页查询所有神仙-->
+    <select id="limitGods" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        LIMIT ${offset},${pageSize};
+    </select>
+
+    <!--根据神仙ID获取神仙-->
+    <select id="getGodById" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        WHERE GodId = #{godId};
+    </select>
+
+    <!--根据神仙姓名获取神仙-->
+    <select id="listGodByName" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        WHERE GodName = #{godName};
+    </select>
+
+    <!--分页根据神仙姓名获取神仙-->
+    <select id="limitGodByName" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        WHERE GodName = #{godName}
+        LIMIT ${offset},${pageSize};
+    </select>
+
+    <!--根据神仙性别获取神仙-->
+    <select id="listGodsBySex" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        WHERE GodSex = #{godSex};
+    </select>
+
+    <!--根据神仙性别获取神仙-->
+    <select id="limitGodsBySex" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        WHERE GodSex = #{godSex}
+        LIMIT ${offset},${pageSize};
+    </select>
+
+    <!--根据神仙类型获取神仙-->
+    <select id="listGodsByType" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        WHERE GodType = #{godType};
+    </select>
+
+    <!--分页根据神仙类型获取神仙-->
+    <select id="limitGodsByType" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        WHERE GodType = #{godType}
+        LIMIT ${offset},${pageSize};
+    </select>
+
+    <!--根据部门获取神仙-->
+    <select id="listGodsByDepartment" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        WHERE GodDepartment = #{godDepartment};
+    </select>
+
+    <!--分页根据部门获取神仙-->
+    <select id="limitGodsByDepartment" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        WHERE GodDepartment = #{godDepartment}
+        LIMIT ${offset},${pageSize};
+    </select>
+
+    <!--根据神职获取神仙-->
+    <select id="listGodsByJob" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        WHERE GodJob = #{godJob};
+    </select>
+
+    <!--根据神职获取神仙-->
+    <select id="limitGodsByJob" resultType="com.vortex.Entity.GodDo">
+        SELECT *
+        FROM paradise.god
+        WHERE GodJob = #{godJob}
+        LIMIT ${offset},${pageSize};
+    </select>
+
+    <!--根据神仙ID删除神仙-->
+    <delete id="deleteGodById">
+        DELETE
+        FROM paradise.god
+        WHERE GodId = #{godId};
+    </delete>
+
+    <!--添加神仙-->
+    <insert id="saveGod">
+        INSERT INTO paradise.god(GodName, GodSex, GodType, GodDepartment, GodJob, GodMerit, GodLocation)
+        VALUES (#{godName}, #{godSex}, #{godType}, #{godDepartment}, #{godJob}, #{godMerit}, #{godLocation});
+    </insert>
+
+    <!--根据神仙ID更新神仙-->
+    <update id="updateGod">
+        UPDATE paradise.god
+        SET GodName=#{godName},
+            GodSex=#{godSex},
+            GodType=#{godType},
+            GodDepartment=#{godDepartment},
+            GodJob=#{godJob},
+            GodMerit=#{godMerit},
+            GodLocation=#{godLocation}
+        WHERE GodId = #{godId};
+    </update>
+
+    <!--获取神仙总数-->
+    <select id="countGod" resultType="int">
+        SELECT count(*)
+        FROM paradise.god;
+    </select>
+
+</mapper>
